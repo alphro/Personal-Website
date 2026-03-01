@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Jane Doe — PhD Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1814;
+      --paper: #f5f2ec;
+      --warm: #c8a96e;
+      --muted: #8a8070;
+      --line: #d8d2c8;
+      --accent: #2d4a3e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(245, 242, 236, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-name {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+    }
+
+    .hero-left {
+      padding: 8rem 4rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-tagline {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 36ch;
+      margin-bottom: 3rem;
+      font-style: italic;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 1.75rem;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .btn-fill {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--paper);
+    }
+
+    .btn-fill:hover {
+      background: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .hero-right {
+      padding: 8rem 4rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .stat-block {
+      border-left: 2px solid var(--warm);
+      padding-left: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 3.5rem;
+      font-weight: 300;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 7rem 4rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .section-number {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--warm);
+      letter-spacing: 0.1em;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 0.6fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #3a3530;
+      margin-bottom: 1.5rem;
+      max-width: 58ch;
+    }
+
+    .about-text p:first-child::first-letter {
+      font-size: 3.5rem;
+      float: left;
+      line-height: 0.8;
+      margin-right: 0.1em;
+      color: var(--accent);
+    }
+
+    .about-photo-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .photo-frame {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #e8e2d8;
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      overflow: hidden;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder-icon {
+      font-size: 3rem;
+      opacity: 0.25;
+    }
+
+    .photo-placeholder-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.6;
+      text-align: center;
+      line-height: 1.8;
+    }
+
+    .about-info {
+      border: 1px solid var(--line);
+      padding: 2rem;
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-row:last-child { border-bottom: none; }
+
+    .info-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 0.2rem;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      font-weight: 300;
+    }
+
+    /* ── RESEARCH ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+    }
+
+    .research-card {
+      padding: 2.5rem;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      transition: background 0.2s;
+    }
+
+    .research-card:hover { background: #efe9df; }
+
+    .research-card:nth-child(3n) { border-right: none; }
+
+    .card-icon {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 2rem;
+      align-items: start;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: background 0.15s;
+    }
+
+    .pub-item:hover { background: rgba(200,169,110,0.05); margin: 0 -1rem; padding: 2.5rem 1rem; }
+
+    .pub-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--warm);
+      padding-top: 0.3rem;
+    }
+
+    .pub-title {
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.3rem;
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .pub-venue {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      padding-top: 0.4rem;
+      white-space: nowrap;
+    }
+
+    /* ── CONTACT ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .contact-text {
+      font-size: 1.5rem;
+      font-weight: 300;
+      font-style: italic;
+      max-width: 40ch;
+      color: #3a3530;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--ink);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-link-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--warm);
+      min-width: 80px;
+    }
+
+    .contact-link-value { font-size: 1.05rem; font-weight: 300; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      max-width: 820px;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 80px 40px 1fr;
+      gap: 0 1rem;
+      position: relative;
+    }
+
+    .tl-left {
+      text-align: right;
+      padding-top: 0.25rem;
+    }
+
+    .tl-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--warm);
+      letter-spacing: 0.08em;
+    }
+
+    .tl-spine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tl-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--paper);
+      outline: 1px solid var(--accent);
+      flex-shrink: 0;
+      margin-top: 0.3rem;
+    }
+
+    .tl-line {
+      width: 1px;
+      flex: 1;
+      background: var(--line);
+      margin-top: 4px;
+    }
+
+    .tl-item:last-child .tl-line { display: none; }
+
+    .tl-right {
+      padding-bottom: 3rem;
+    }
+
+    .tl-role {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.15rem;
+    }
+
+    .tl-org {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--accent);
+      margin-bottom: 0.15rem;
+    }
+
+    .tl-type {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .tl-desc {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: #5a5248;
+      max-width: 52ch;
+      line-height: 1.6;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    .delay-1 { animation-delay: 0.15s; }
+    .delay-2 { animation-delay: 0.3s; }
+    .delay-3 { animation-delay: 0.45s; }
+    .delay-4 { animation-delay: 0.6s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 7rem 1.5rem 2rem; border-right: none; }
+      .hero-right { padding: 2rem 1.5rem 4rem; flex-direction: row; flex-wrap: wrap; }
+      .about-grid, .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .research-grid { grid-template-columns: 1fr; }
+      .research-card { border-right: none; }
+      section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .pub-item { grid-template-columns: 60px 1fr; }
+      .pub-venue { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Jane Doe</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-top:none; padding:0;">
+  <div class="hero-left">
+    <p class="hero-label fade-in">PhD Researcher · University of Example</p>
+    <h1 class="hero-name fade-in delay-1">Jane<br><em>Doe</em></h1>
+    <p class="hero-tagline fade-in delay-2">Studying [your research topic] at the intersection of [field A] and [field B].</p>
+    <div class="hero-ctas fade-in delay-3">
+      <a href="#research" class="btn btn-fill">View Research</a>
+      <a href="/cv.pdf" class="btn">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-right fade-in delay-2">
+    <div class="stat-block">
+      <div class="stat-number">2nd</div>
+      <div class="stat-label">Year PhD</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">8</div>
+      <div class="stat-label">Publications</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Ongoing Projects</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number">2</div>
+      <div class="stat-label">Awards & Grants</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-number">01</span>
+    <h2 class="section-title">About</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I am a second-year PhD researcher at the [Department Name], [University Name], working under the supervision of Prof. [Supervisor Name]. My work focuses on [brief description of your research area and why it matters].</p>
+      <p>Before starting my PhD, I completed my undergraduate and masters degrees at [Institution]. I have a particular interest in [specific aspect of your field], and I believe [what you think about the implications or future of your research].</p>
+      <p>Outside of research, I [hobby or outreach activity], and I am committed to making science accessible to broader audiences.</p>
+    </div>
+    <div class="about-photo-wrap">
+      <div class="photo-frame">
+        <!-- Replace the content below with: <img src="photo.jpg" alt="Your Name" /> -->
+        <div class="photo-placeholder-icon">◉</div>
+        <div class="photo-placeholder-text">Replace with<br>your photo<br><br>img src="photo.jpg"</div>
+      </div>
+    </div>
+    <div class="about-info">
+      <div class="info-row">
+        <span class="info-label">Position</span>
+        <span class="info-value">PhD Candidate, Year 2</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Institution</span>
+        <span class="info-value">University of Example</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Department</span>
+        <span class="info-value">Dept. of [Your Field]</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Supervisor</span>
+        <span class="info-value">Prof. [Name]</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Funding</span>
+        <span class="info-value">[Grant or Fellowship Name]</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-number">02</span>
+    <h2 class="section-title">Experience</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-year">2024</span>
+      </div>
+      <div class="tl-spine">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-role">Research Intern</div>
+        <div class="tl-org">Organisation / Company Name</div>
+        <div class="tl-type">Industry · 3 months</div>
+        <p class="tl-desc">Brief description of what you worked on, what you learned, or what you built. One or two sentences is plenty.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-year">2023</span>
+      </div>
+      <div class="tl-spine">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-role">Summer Research Assistant</div>
+        <div class="tl-org">University / Lab Name</div>
+        <div class="tl-type">Academic · 2 months</div>
+        <p class="tl-desc">Brief description of what you worked on, what you learned, or what you built. One or two sentences is plenty.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-year">2022</span>
+      </div>
+      <div class="tl-spine">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-role">Internship Role Title</div>
+        <div class="tl-org">Organisation / Company Name</div>
+        <div class="tl-type">Industry · 6 months</div>
+        <p class="tl-desc">Brief description of what you worked on, what you learned, or what you built. One or two sentences is plenty.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-year">2021</span>
+      </div>
+      <div class="tl-spine">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-role">Teaching Assistant</div>
+        <div class="tl-org">University / Department</div>
+        <div class="tl-type">Academic · 1 semester</div>
+        <p class="tl-desc">Brief description of what you worked on, what you learned, or what you built. One or two sentences is plenty.</p>
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-left">
+        <span class="tl-year">2020</span>
+      </div>
+      <div class="tl-spine">
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+      </div>
+      <div class="tl-right">
+        <div class="tl-role">Fieldwork Placement</div>
+        <div class="tl-org">Organisation / Lab Name</div>
+        <div class="tl-type">Fieldwork · 4 months</div>
+        <p class="tl-desc">Brief description of what you worked on, what you learned, or what you built. One or two sentences is plenty.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header">
+    <span class="section-number">03</span>
+    <h2 class="section-title">Research</h2>
+  </div>
+  <div class="research-grid">
+    <div class="research-card">
+      <div class="card-icon">◈</div>
+      <h3 class="card-title">Project One Title</h3>
+      <p class="card-desc">A short description of what this research project involves, what question you're answering, and why it matters. Replace with your actual work.</p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">◇</div>
+      <h3 class="card-title">Project Two Title</h3>
+      <p class="card-desc">A short description of what this research project involves, what question you're answering, and why it matters. Replace with your actual work.</p>
+    </div>
+    <div class="research-card">
+      <div class="card-icon">○</div>
+      <h3 class="card-title">Project Three Title</h3>
+      <p class="card-desc">A short description of what this research project involves, what question you're answering, and why it matters. Replace with your actual work.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-header">
+    <span class="section-number">04</span>
+    <h2 class="section-title">Publications</h2>
+  </div>
+  <div class="pub-list">
+    <div class="pub-item">
+      <span class="pub-year">2024</span>
+      <div>
+        <div class="pub-title">Your Most Recent Paper Title Goes Here</div>
+        <div class="pub-authors">Doe, J., Smith, A., Johnson, B.</div>
+      </div>
+      <span class="pub-venue">Nature · 2024</span>
+    </div>
+    <div class="pub-item">
+      <span class="pub-year">2023</span>
+      <div>
+        <div class="pub-title">Second Publication Title — Replace with Yours</div>
+        <div class="pub-authors">Doe, J., Williams, C.</div>
+      </div>
+      <span class="pub-venue">PNAS · 2023</span>
+    </div>
+    <div class="pub-item">
+      <span class="pub-year">2023</span>
+      <div>
+        <div class="pub-title">Third Publication — Another Example Entry</div>
+        <div class="pub-authors">Doe, J., Brown, K., Davis, M.</div>
+      </div>
+      <span class="pub-venue">Science · 2023</span>
+    </div>
+    <div class="pub-item">
+      <span class="pub-year">2022</span>
+      <div>
+        <div class="pub-title">Earlier Work Title From Your First Years</div>
+        <div class="pub-authors">Doe, J., Taylor, R.</div>
+      </div>
+      <span class="pub-venue">Cell · 2022</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <h2 class="section-title">Contact</h2>
+  </div>
+  <div class="contact-inner">
+    <p class="contact-text">"Open to collaborations, speaking invitations, and conversations about [your field]."</p>
+    <div class="contact-links">
+      <a href="mailto:you@university.ac.uk" class="contact-link">
+        <span class="contact-link-label">Email</span>
+        <span class="contact-link-value">you@university.ac.uk</span>
+      </a>
+      <a href="https://twitter.com/yourhandle" class="contact-link">
+        <span class="contact-link-label">Twitter/X</span>
+        <span class="contact-link-value">@yourhandle</span>
+      </a>
+      <a href="https://scholar.google.com" class="contact-link">
+        <span class="contact-link-label">Scholar</span>
+        <span class="contact-link-value">Google Scholar Profile</span>
+      </a>
+      <a href="https://github.com/yourhandle" class="contact-link">
+        <span class="contact-link-label">GitHub</span>
+        <span class="contact-link-value">github.com/yourhandle</span>
+      </a>
+      <a href="https://linkedin.com/in/yourhandle" class="contact-link">
+        <span class="contact-link-label">LinkedIn</span>
+        <span class="contact-link-value">linkedin.com/in/yourhandle</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Jane Doe · PhD Researcher</span>
+  <span class="footer-copy">Built with plain HTML · Hosted on GitHub Pages</span>
+</footer>
+
+</body>
+</html>
