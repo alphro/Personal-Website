@@ -6,7 +6,7 @@
   <title>Projects · Jason Teng</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
 
@@ -25,31 +25,54 @@
 <div class="page-head">
   <p class="page-kicker">Projects</p>
   <h1 class="page-title">Things I've <em>built</em></h1>
-  <p class="page-intro">Side projects across machine learning, time series, and applied statistics.</p>
+  <p class="page-intro">Coursework and independent projects, grouped into classical statistical methods and machine learning and Bayesian work. Each card links to the full write-up.</p>
 </div>
 
 <section id="projects">
-  <div class="research-grid">
-    <div class="research-card">
-      <div class="card-icon">○</div>
-      <h3 class="card-title">Bayesian Neural Networks</h3>
-      <p class="card-desc">Bayesian recurrent networks for financial time series, reproducing and probing the limits of a reference method.</p>
-    </div>
-    <div class="research-card">
-      <div class="card-icon">△</div>
-      <h3 class="card-title">Image Classification of Bees</h3>
-      <p class="card-desc">A convolutional neural network that distinguishes honey bees from bumblebees, built with Keras and TensorFlow.</p>
-    </div>
-    <div class="research-card">
+  <span class="exp-cat">Classical Statistics</span>
+  <div class="research-grid grid-2">
+    <a class="research-card" href="assets/docs/covid19-logistic-regression.pdf" target="_blank" rel="noopener">
+      <span class="card-tag">Medical</span>
       <div class="card-icon">□</div>
-      <h3 class="card-title">Popcorn Time Series</h3>
-      <p class="card-desc">SARIMA modeling of long run interest trends from Google Trends data, with a look at where volatility breaks forecasting.</p>
-    </div>
-    <div class="research-card">
+      <h3 class="card-title">COVID-19 Diagnosis from Lab Tests</h3>
+      <p class="card-desc">Logistic regression on 608 hospital patients to find laboratory markers and demographics that predict COVID-19 infection when RT-PCR testing is unavailable.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+    <a class="research-card" href="assets/docs/infant-mortality-analysis.pdf" target="_blank" rel="noopener">
+      <span class="card-tag">Medical</span>
+      <div class="card-icon">△</div>
+      <h3 class="card-title">Smoking, Age &amp; Infant Mortality</h3>
+      <p class="card-desc">A clinical contingency-table study using tests for proportions to relate a mother's age and smoking habits to gestational age and infant mortality.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+    <a class="research-card" href="assets/docs/count-regression-glms.pdf" target="_blank" rel="noopener">
+      <div class="card-icon">○</div>
+      <h3 class="card-title">Count Regression with GLMs</h3>
+      <p class="card-desc">Quasi-binomial and negative-binomial models for overdispersed count data, applied to glove-use and school-absence datasets.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+    <a class="research-card" href="assets/docs/popcorn-time-series.pdf" target="_blank" rel="noopener">
+      <div class="card-icon">◇</div>
+      <h3 class="card-title">Popcorn Interest Time Series</h3>
+      <p class="card-desc">SARIMA modeling of 2004 to 2021 Google Trends data, using transformation and seasonal differencing to forecast demand.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+  </div>
+
+  <span class="exp-cat" style="display:block; margin-top:3rem;">Machine Learning &amp; Bayesian Methods</span>
+  <div class="research-grid grid-2">
+    <a class="research-card" href="assets/docs/bayesian-regularized-neural-network.pdf" target="_blank" rel="noopener">
+      <div class="card-icon">◈</div>
+      <h3 class="card-title">Bayesian Regularized Neural Networks</h3>
+      <p class="card-desc">Replicating and extending Bayesian regularized neural networks for stock-market forecasting, testing where they outperform plain feed-forward nets.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+    <a class="research-card" href="assets/img/bees.png" target="_blank" rel="noopener">
       <div class="card-icon">▧</div>
-      <h3 class="card-title">More on the way</h3>
-      <p class="card-desc">A growing collection. More to be added here as I go.</p>
-    </div>
+      <h3 class="card-title">Naive Bees: CNN Image Classification</h3>
+      <p class="card-desc">A convolutional neural network in Keras and TensorFlow that classifies honey bees versus bumblebees from 1,654 field images.</p>
+      <span class="more-link">View poster &rarr;</span>
+    </a>
   </div>
 </section>
 

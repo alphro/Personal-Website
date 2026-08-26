@@ -347,6 +347,27 @@
       line-height: 1.6;
     }
 
+    /* clickable project cards + tags + 2-up grid */
+    a.research-card { text-decoration: none; color: inherit; display: block; }
+    .research-card { position: relative; }
+    .card-tag {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      font-family: 'DM Mono', monospace; font-size: 0.58rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--warm); border: 1px solid var(--line);
+      padding: 0.2rem 0.5rem; border-radius: 3px;
+    }
+    .research-grid.grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .research-grid.grid-2 .research-card:nth-child(3n) { border-right: 1px solid var(--line); }
+    .research-grid.grid-2 .research-card:nth-child(2n) { border-right: none; }
+
+    /* social / affiliation icon row under the hero CTAs */
+    .social-row { display: flex; gap: 2.2rem; align-items: center; margin-top: 3rem; }
+    .social-row a { line-height: 0; }
+    .social-icon { height: 54px; width: auto; display: block; opacity: 0.5; transition: opacity 0.2s; }
+    .social-icon.ucsc { height: 64px; }
+    .social-row a:hover .social-icon { opacity: 1; }
+
     /* ── PUBLICATIONS ── */
     .pub-list {
       display: flex;

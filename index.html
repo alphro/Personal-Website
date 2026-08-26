@@ -6,7 +6,7 @@
   <title>Jason Teng · PhD Statistics, UC Santa Cruz</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-photo fade-in">
-    <img src="hero.jpg" alt="Jason Teng" />
+    <img src="assets/img/hero.jpg" alt="Jason Teng" />
   </div>
   <div class="hero-left">
     <p class="hero-label fade-in">PhD Statistics · UC Santa Cruz</p>
@@ -35,6 +35,11 @@
       <a href="research.html" class="btn btn-fill">View Research</a>
       <a href="research.html#publications" class="btn">Publications</a>
       <a href="/resume.pdf" class="btn">Download Resume</a>
+    </div>
+    <div class="social-row fade-in delay-4">
+      <a href="https://www.linkedin.com/in/jiayingteng/" target="_blank" rel="noopener" aria-label="LinkedIn"><img class="social-icon" src="assets/icons/linkedin.svg" alt="LinkedIn" /></a>
+      <a href="https://github.com/alphro" target="_blank" rel="noopener" aria-label="GitHub"><img class="social-icon" src="assets/icons/github.svg" alt="GitHub" /></a>
+      <a href="https://engineering.ucsc.edu/departments/statistics/" target="_blank" rel="noopener" aria-label="UC Santa Cruz Statistics"><img class="social-icon ucsc" src="assets/icons/ucsc.svg" alt="UC Santa Cruz Statistics" /></a>
     </div>
   </div>
 </section>
@@ -66,7 +71,7 @@
     <h2 class="section-title">Research</h2>
   </div>
   <span class="exp-cat">Interests</span>
-  <div class="research-grid">
+  <div class="research-grid grid-2">
     <div class="research-card">
       <div class="card-icon">◈</div>
       <h3 class="card-title">Bayesian Federated Learning</h3>
@@ -136,17 +141,20 @@
     <h2 class="section-title">Projects</h2>
   </div>
   <span class="exp-cat">Featured</span>
-  <div class="research-grid">
-    <div class="research-card">
-      <div class="card-icon">○</div>
-      <h3 class="card-title">Bayesian Neural Networks</h3>
-      <p class="card-desc">Bayesian recurrent nets probing the limits of forecasting on financial time series.</p>
-    </div>
-    <div class="research-card">
-      <div class="card-icon">△</div>
-      <h3 class="card-title">Image Classification of Bees</h3>
-      <p class="card-desc">A CNN that tells honey bees from bumblebees.</p>
-    </div>
+  <div class="research-grid grid-2">
+    <a class="research-card" href="assets/docs/bayesian-regularized-neural-network.pdf" target="_blank" rel="noopener">
+      <div class="card-icon">◈</div>
+      <h3 class="card-title">Bayesian Regularized Neural Networks</h3>
+      <p class="card-desc">Bayesian neural nets probing the limits of forecasting on financial time series.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
+    <a class="research-card" href="assets/docs/covid19-logistic-regression.pdf" target="_blank" rel="noopener">
+      <span class="card-tag">Medical</span>
+      <div class="card-icon">□</div>
+      <h3 class="card-title">COVID-19 Diagnosis from Lab Tests</h3>
+      <p class="card-desc">Logistic regression identifying lab markers that flag likely COVID-19 when testing is limited.</p>
+      <span class="more-link">View report &rarr;</span>
+    </a>
   </div>
   <a class="more-link" href="projects.html">Browse all projects &rarr;</a>
 </section>
@@ -159,7 +167,7 @@
   </div>
   <div class="contact-inner">
     <div class="contact-left">
-      <div class="contact-photo"><img src="about_p.jpg" alt="Jason Teng" /></div>
+      <div class="contact-photo"><img src="assets/img/about_p.jpg" alt="Jason Teng" /></div>
       <p class="contact-text">You've made it to the bottom. Thank you for reading my page! If you have any questions, want to collaborate, or just want to chat, here is how to reach me.</p>
     </div>
     <div class="contact-links">
@@ -171,9 +179,9 @@
         <span class="contact-link-label">GitHub</span>
         <span class="contact-link-value">github.com/alphro</span>
       </a>
-      <a href="https://linkedin.com/in/YOURHANDLE" class="contact-link">
+      <a href="https://www.linkedin.com/in/jiayingteng/" target="_blank" rel="noopener" class="contact-link">
         <span class="contact-link-label">LinkedIn</span>
-        <span class="contact-link-value">linkedin.com/in/YOURHANDLE</span>
+        <span class="contact-link-value">linkedin.com/in/jiayingteng</span>
       </a>
     </div>
   </div>
